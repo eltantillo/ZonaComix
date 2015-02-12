@@ -1,5 +1,5 @@
 # ZonaComix
-Repositorio de Zona Comix
+Repositorio de Zona Comix 
 
 ##Doctrine
 Genrar entidad:
