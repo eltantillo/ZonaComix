@@ -1,0 +1,9 @@
+zona_comix_web_service:
+    resource: "@ZonaComixWebServiceBundle/Resources/config/routing.yml"
+    prefix:   /api/
+    schemes:  [https]
+
+zona_comix_website:
+    resource: "@ZonaComixWebsiteBundle/Resources/config/routing.yml"
+    prefix:   /
+    schemes:  [https]

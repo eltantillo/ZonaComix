@@ -1,0 +1,37 @@
+{% extends '::WebsiteBase.html.twig' %}
+
+{% block title %}Buscar - Zona Comix{% endblock %}
+
+{% block body %}
+	<div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1 class="page-header">Resultados de la búsqueda</h1>
+
+                {% for comic in comics %}
+	                <div class="col-sm-4 text-center">
+	                    <a href="{{ path('zona_comix_website_read_chapter', {'comic': comic.title}) }}" class="clean-link">
+	                    <h3>{{ comic.title }}</h3>
+	                    <p><img src="{{ asset('comics/' ~ comic.id ~ '/cover.jpg') }}" class="img-responsive"></p>
+	                    </a>
+	                    <p>{{ comic.description }}</p>
+	                    <p><!--<a class="btn btn-primary btn-lg" href="{{ path('zona_comix_website_follow_comic', {'comic': comic.title}) }}" role="button">Seguir <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a> --><a class="btn btn-primary btn-lg" href="{{ path('zona_comix_website_comic', {'comic': comic.title}) }}" role="button">Más información »</a></p>
+	                </div>
+	            {% endfor %}
+
+	            <div class="col-xs-12">
+	                <nav>
+	                    <ul class="pager">
+	                        {% if page > 1 %}
+	                            <li><a href="{{ path('zona_comix_website_search_result', {'page': page - 1, 'filter': filter}) }}">Anterior</a></li>
+	                        {% endif %}
+	                        {% if entries == 10 %}
+	                            <li><a href="{{ path('zona_comix_website_search_result', {'page': page + 1, 'filter': filter}) }}">Siguiente</a></li>
+	                        {% endif %}
+	                    </ul>
+	                </nav>
+	            </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

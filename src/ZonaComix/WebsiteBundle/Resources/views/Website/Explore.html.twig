@@ -1,0 +1,19 @@
+{% extends '::WebsiteBase.html.twig' %}
+
+{% block title %}Explorar - Zona Comix{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<h1 class="page-header">Explorar</h1>
+				
+				{% form_theme form 'form/fields.html.twig' %}
+				{{ form_start(form, { 'attr': {'class': 'form-horizontal'}}) }}
+				{{ form_widget(form) }}
+				{{ form_end(form) }}
+			</div>
+		</div>
+	</div>
+{% endblock %}

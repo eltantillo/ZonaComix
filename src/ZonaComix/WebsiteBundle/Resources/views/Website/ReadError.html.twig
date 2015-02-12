@@ -1,0 +1,14 @@
+{% extends '::WebsiteBase.html.twig' %}
+
+{% block title %}El capítulo no existe - Zona Comix{% endblock %}
+
+{% block body %}
+	<div class="container">
+        <div class="row">
+            <h1 class="page-header">El capítulo no existe</h1>
+            <div class="jumbotron">
+                <p>Este capítulo aún no se ha publicado. pulsa <a href="{{ path('zona_comix_website_comic', {'comic': comic.title}) }}">aquí</a> para ver la lista completa de capítulos.</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

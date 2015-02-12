@@ -1,0 +1,26 @@
+{% extends '::WebsiteBase.html.twig' %}
+
+{% block title %}Dejar de Seguir - Zona Comix{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div class="row">
+			<h1 class="page-header">Dejar de seguir</h1>
+			<div class="jumbotron">
+				<p>Has dejado de seguir a {{ name }}.</p>
+				<p>
+					{% if user %}
+						<a class="btn btn-primary btn-lg" href="{{ path('zona_comix_website_library_users') }}" role="button">Ir a la librería <span class="glyphicon glyphicon-book" aria-hidden="true"></span></a>
+
+						<a class="btn btn-primary btn-lg" href="{{ path('zona_comix_website_user', {'username': name}) }}" role="button">Ir al perfil <span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
+					{% else %}
+						<a class="btn btn-primary btn-lg" href="{{ path('zona_comix_website_library_comics') }}" role="button">Ir a la librería <span class="glyphicon glyphicon-book" aria-hidden="true"></span></a>
+
+						<a class="btn btn-primary btn-lg" href="{{ path('zona_comix_website_comic', {'comic': name}) }}" role="button">Ir al comic <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></a>
+					{% endif %}
+				</p>
+
+			</div>
+		</div>
+	</div>
+{% endblock %}

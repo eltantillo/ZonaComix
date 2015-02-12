@@ -1,0 +1,48 @@
+{% extends '::WebsiteBase.html.twig' %}
+
+{% block title %}Identificarse - Zona Comix{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div class="row">
+	        <h1 class="page-header">Identificarse</h1>
+
+			{% if error %}
+				<div>{{ error.message }}</div>
+			{% endif %}
+
+			<div class="form-container">
+				<form action="{{ path('login_check') }}" method="post" class="form-horizontal">
+					<fieldset>
+						<!-- Usuario -->
+						<div class="form-group">
+							<label class="col-md-4 control-label" for="username">Nombre de usuario</label>  
+							<div class="col-md-4">
+								<input id="username" name="_username" placeholder="Nombre de usuario" class="form-control input-md" required type="text" value="{{ last_username }}">
+							</div>
+						</div>
+						<!-- Contraseña -->
+						<div class="form-group">
+							<label class="col-md-4 control-label" for="password">Contraseña</label>  
+							<div class="col-md-4">
+								<input id="password" name="_password" placeholder="Password" class="form-control input-md" required type="password">
+							</div>
+						</div>
+						<!-- Recordarme -->
+						<div class="form-group">
+							<label class="col-md-4 control-label" for="password">No cerrar sesión</label>  
+							<div class="col-md-4">
+								<input type="checkbox" id="remember_me" name="_remember_me" checked> Recordar mi sesión en esta computadora.<br>
+							</div>
+						</div>
+						<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+						<div class="form-group text-center">
+							<button type="submit" class="btn btn-primary">Enviar</button>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+
+		</div>
+	</div>
+{% endblock %}

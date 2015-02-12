@@ -1,0 +1,61 @@
+{% extends 'ZonaComixWebsiteBundle:Website:Dashboard/Dashboard.html.twig' %}
+
+{% block title %}Escritorio (Balance de Cuenta) - Zona Comix{% endblock %}
+
+{% block container %}
+	<h2 class="sub-header">Balance de Cuenta</h2>
+	<div class="table-responsive">
+		<table class="table">
+			<tr class="info">
+				<th>Ganancias</th>
+				<th>Depósitos</th>
+				<th>Gastos</th>
+				<th>Retiros</th>
+				<th>Fondos</th>
+			</tr>
+			<tr>
+				<td>${{ user.revenue.earnings }}</td>
+				<td>${{ user.revenue.deposits }}</td>
+				<td>${{ user.revenue.expenses }}</td>
+				<td>${{ user.revenue.withdrawals }}</td>
+				<td>${{ user.revenue.funds }}</td>
+			</tr>
+		</table>
+	</div>
+	<h3 class="sub-header">Detalle</h3>
+	<div class="table-responsive">
+		<table class="table table-striped">
+			<tr>
+				<th>Concepto</th>
+				<th>Lecturas</th>
+				<th>Ganancias</th>
+			</tr>
+			{% set totalReadings = 0 %}
+			{% set totalRevenue = 0 %}
+			{% for comic in user.comics %}
+			<tr>
+				{% set chapterReadings = 0 %}
+				{% for chapter in comic.chapters %}
+					{% set chapterReadings = chapterReadings + chapter.readings %}
+				{% endfor %}
+				{% set totalReadings = totalReadings + chapterReadings %}
+				{% set totalRevenue = totalRevenue + (chapterReadings * 0.0050) %}
+
+				<td>Comic: <em>{{ comic.title }}</em></td>
+				<td>{{ chapterReadings }}</td>
+				<td>${{ chapterReadings * 0.0050 }}</td>
+			</tr>
+			{% endfor %}
+			<tr class="active">
+				<td>Programa de Referidos</td>
+				<td>No disponible</td>
+				<td>${{ user.revenue.funds - totalRevenue }}</td>
+			</tr>
+			<tr class="success">
+				<td><strong >Total</strong></td>
+				<td>{{ totalReadings }}</td>
+				<td>${{ totalRevenue }}</td>
+			</tr>
+		</table>
+	</div>
+{% endblock %}

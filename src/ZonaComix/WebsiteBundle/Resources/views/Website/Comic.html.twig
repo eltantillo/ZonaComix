@@ -1,0 +1,81 @@
+{% extends '::WebsiteBase.html.twig' %}
+
+{% block title %} {{ comic.title }} - Zona Comix{% endblock %}
+
+{% block body %}
+    <div class="jumbotron text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 text-center">
+                    <img src="{{ asset('comics/' ~ comic.id ~ '/cover.jpg') }}" class="img-responsive">
+                </div>
+                <div class="col-sm-8 text-center">
+                    <h1>{{ comic.title }}</h1>
+                    <p>{{ comic.description }}</p>
+                    <p>{{ followers }} seguidor{% if followers != 1 %}es{% endif %}</p>
+                    <p>
+
+                    {% if following == false %}
+                        <a class="btn btn-primary btn-lg" href="{{ path('zona_comix_website_follow_comic', {'comic': comic.title}) }}" role="button">Seguir <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                    {% else %}
+                        <a class="btn btn-primary btn-lg" href="{{ path('zona_comix_website_unfollow_comic', {'comic': comic.title}) }}" role="button">Dejar de seguir <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span></a>
+                    {% endif %}
+
+                     <a class="btn btn-default btn-lg" href="{{ path('zona_comix_website_read_chapter', {'comic': comic.title}) }}" role="button">Leer Completo »</a></p>
+
+
+                    <h2>Publicado por</h2>
+                    <p><a href="{{ path('zona_comix_website_user', {'username': comic.user.username}) }}" class="clean-link">
+
+                    {% if file_exists('avatars/' ~ comic.user.id ~ '.jpg') %}
+                        <img src="{{ asset('avatars/' ~ comic.user.id ~ '.jpg') }}" class="img-circle small-margin" height="200">
+                    {% else %}
+                        <img src="{{ asset('images/guest.png') }}" class="img-circle small-margin" height="200">
+                    {% endif %}
+                    <br>
+
+                    {% if comic.user.displayName == "" %}
+                        {{ comic.user.username }}
+                    {% else %}
+                        {{ comic.user.displayName }}
+                    {% endif %}
+
+                    </a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <h2>Capítulos</h2>
+            {% for chapter in chapters %}
+                {% if chapter.visible %}
+                    <div class="col-sm-4 text-center">
+                        <a href="{{ path('zona_comix_website_read_chapter', {'comic': comic.title, 'chapter': chapter.number}) }}" class="clean-link">
+                            <h3>
+                            Capítulo {{ chapter.number }} 
+                            {% if chapter.title != "" %}
+                             - {{ chapter.title }}
+                            {% endif %}
+                            </h3>
+                            <p><img src="{{ asset('comics/' ~ chapter.comic.id ~ '/' ~ chapter.number ~ '/0.jpg') }}" class="img-responsive"></p>   
+                        </a>
+                    </div>
+                {% endif %}
+            {% endfor %}
+
+            <div class="col-xs-12">
+                <nav>
+                    <ul class="pager">
+                        {% if page > 1 %}
+                            <li><a href="{{ path('zona_comix_website_comic', {'page': page - 1, 'comic': comic.title}) }}">Anterior</a></li>
+                        {% endif %}
+                        {% if entries == 10 %}
+                            <li><a href="{{ path('zona_comix_website_comic', {'page': page + 1, 'comic': comic.title}) }}">Siguiente</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        </div>    
+    </div>
+{% endblock %}  

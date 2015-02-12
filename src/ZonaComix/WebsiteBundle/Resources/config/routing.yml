@@ -1,0 +1,130 @@
+zona_comix_website_cover:
+    path:     /
+    defaults: { _controller: ZonaComixWebsiteBundle:Home:Cover }
+
+zona_comix_website_home:
+    path:     /inicio/{page}/
+    defaults: { _controller: ZonaComixWebsiteBundle:Home:NewsFeed, page: '1' }
+
+zona_comix_website_dashboard:
+    path:     /escritorio/
+    defaults: { _controller: ZonaComixWebsiteBundle:Dashboard:index }
+
+zona_comix_website_dashboard_revenue:
+    path:     /escritorio/balance/
+    defaults: { _controller: ZonaComixWebsiteBundle:Dashboard:Revenue }
+
+zona_comix_website_dashboard_profile:
+    path:     /escritorio/perfil/
+    defaults: { _controller: ZonaComixWebsiteBundle:Dashboard:Profile }
+
+zona_comix_website_dashboard_comics:
+    path:     /escritorio/comics/{page}/
+    defaults: { _controller: ZonaComixWebsiteBundle:Dashboard:Comics, page: 1 }
+
+zona_comix_website_dashboard_chapters:
+    path:     /escritorio/capitulos/{comic}/{page}/
+    defaults: { _controller: ZonaComixWebsiteBundle:Dashboard:Chapters, page: 1 }
+
+zona_comix_website_dashboard_edit_comic:
+    path:     /escritorio/editar/{comic}/
+    defaults: { _controller: ZonaComixWebsiteBundle:Dashboard:EditComic }
+
+zona_comix_website_dashboard_edit_chapter:
+    path:     /escritorio/editar/{comic}/{chapter}/
+    defaults: { _controller: ZonaComixWebsiteBundle:Dashboard:EditChapter }
+
+zona_comix_website_dashboard_new_comic:
+    path:     /escritorio/nuevo/
+    defaults: { _controller: ZonaComixWebsiteBundle:Dashboard:NewComic }
+
+zona_comix_website_dashboard_new_chapter:
+    path:     /escritorio/nuevo/{comic}/
+    defaults: { _controller: ZonaComixWebsiteBundle:Dashboard:NewChapter }
+
+zona_comix_website_dashboard_referral:
+    path:     /escritorio/referidos/
+    defaults: { _controller: ZonaComixWebsiteBundle:Dashboard:Referral }
+
+zona_comix_website_library:
+    path:     /libreria/
+    defaults: { _controller: ZonaComixWebsiteBundle:Library:index }
+
+zona_comix_website_library_users:
+    path:     /libreria/usuarios/{page}/
+    defaults: { _controller: ZonaComixWebsiteBundle:Library:Users, page: 1 }
+
+zona_comix_website_library_comics:
+    path:     /libreria/comics/{page}/
+    defaults: { _controller: ZonaComixWebsiteBundle:Library:Comics, page: 1 }
+
+zona_comix_website_comic:
+    path:     /comic/{comic}/{page}/
+    defaults: { _controller: ZonaComixWebsiteBundle:Comic:index, page: 1 }
+
+zona_comix_website_user:
+    path:     /usuario/{username}/{page}/
+    defaults: { _controller: ZonaComixWebsiteBundle:User:index, page: 1 }
+
+zona_comix_website_search:
+    path:     /buscar/
+    defaults: { _controller: ZonaComixWebsiteBundle:Search:index }
+
+zona_comix_website_search_result:
+    path:     /buscar/{filter}/{page}/
+    defaults: { _controller: ZonaComixWebsiteBundle:Search:Result, page: 1 }
+
+zona_comix_website_register:
+    path:     /registro/{username}/
+    defaults: { _controller: ZonaComixWebsiteBundle:Register:Register, username: "eltantillo" }
+
+zona_comix_website_register_complete:
+    path:     /registrocompleto/
+    defaults: { _controller: ZonaComixWebsiteBundle:Register:RegisterComplete }
+
+zona_comix_website_validate_account:
+    path:     /validar/{username}/{key}/
+    defaults: { _controller: ZonaComixWebsiteBundle:Register:ValidateAccount }
+
+zona_comix_website_read_chapter:
+    path:     /leer/{comic}/{chapter}/{page}/
+    defaults: { _controller: ZonaComixWebsiteBundle:Read:index, chapter: 1, page: 0 }
+
+zona_comix_website_explore:
+    path:     /explorar/
+    defaults: { _controller: ZonaComixWebsiteBundle:Explore:index}
+
+zona_comix_website_explore_results:
+    path:     /explorar/{rating}/{genre}/{style}/{license}/{page}/
+    defaults: { _controller: ZonaComixWebsiteBundle:Explore:Results, page: 1, rating: '%' }
+
+zona_comix_website_follow_user:
+    path:     /seguir/usuario/{username}/
+    defaults: { _controller: ZonaComixWebsiteBundle:Follow:FollowUser }
+
+zona_comix_website_follow_comic:
+    path:     /seguir/comic/{comic}/
+    defaults: { _controller: ZonaComixWebsiteBundle:Follow:FollowComic }
+
+zona_comix_website_unfollow_user:
+    path:     /dejar/usuario/{username}/
+    defaults: { _controller: ZonaComixWebsiteBundle:Follow:UnfollowUser }
+
+zona_comix_website_unfollow_comic:
+    path:     /dejar/comic/{comic}/
+    defaults: { _controller: ZonaComixWebsiteBundle:Follow:UnfollowComic }
+
+login:
+    path:  /identificarse/
+    defaults: { _controller: ZonaComixWebsiteBundle:Register:Login }
+
+login_check:
+    path: /login_check/
+
+logout:
+    path: /desconectarse/
+
+
+test:
+    path:     /test/
+    defaults: { _controller: ZonaComixWebsiteBundle:Test:index }

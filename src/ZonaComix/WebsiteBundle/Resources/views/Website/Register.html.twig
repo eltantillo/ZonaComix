@@ -1,0 +1,22 @@
+{% extends '::WebsiteBase.html.twig' %}
+
+{% block title %}Registro - Zona Comix{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/bootstrapValidator.min.css') }}">
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div class="row">
+			<h1 class="page-header">Registro de cuenta nueva</h1>
+			<div class="form-container">
+				{% form_theme form 'form/fields.html.twig' %}
+				{{ form_start(form, { 'attr': {'class': 'form-horizontal'}}) }}
+				{{ form_widget(form) }}
+				{{ form_end(form) }}
+			</div>
+		</div>
+	</div>
+{% endblock %}

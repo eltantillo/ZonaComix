@@ -1,0 +1,31 @@
+{% extends '::WebsiteBase.html.twig' %}
+
+{% block title %}Librería - Zona Comix{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <!--<h1 class="page-header">
+                Librería
+                <br><small>Aquí se muestran los comics y dibujantes a los que sigues</small>
+            </h1>-->
+
+            <div class="col-sm-12">
+                <h1 class="page-header">Librería</h1>
+                <div class="row placeholders">
+                    <div class="col-xs-6 placeholder">
+                        <a href="{{ path('zona_comix_website_library_users') }}" class="clean-link"><img src="{{ asset( 'images/guest.png' ) }}" class="img-responsive">
+                        <h4>Usuarios</h4>
+                        <span class="text-muted">Mostrar los usuarios a los que te encuentras siguiendo.</span></a>
+                    </div>
+                    <div class="col-xs-6 placeholder">
+                        <a href="{{ path('zona_comix_website_library_comics') }}" class="clean-link"><img src="{{ asset( 'images/comic.png' ) }}" class="img-responsive" alt="Generic placeholder thumbnail">
+                        <h4>Comics</h4>
+                        <span class="text-muted">Mostrar los comics a los que te encuentras siguiendo.</span></a>
+                    </div>
+                </div>
+            </div>
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+{% endblock %}

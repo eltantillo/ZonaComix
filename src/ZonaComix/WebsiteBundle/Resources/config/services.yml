@@ -1,0 +1,8 @@
+parameters:
+    sybio.twig_extension.class: ZonaComix\WebsiteBundle\Twig\Extension\FileExistsExtension
+
+services:
+    sybio.twig_extension:
+        class: %sybio.twig_extension.class%
+        tags:
+            - { name: twig.extension }

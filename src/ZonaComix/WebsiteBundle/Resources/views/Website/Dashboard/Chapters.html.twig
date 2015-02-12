@@ -1,0 +1,40 @@
+{% extends 'ZonaComixWebsiteBundle:Website:Dashboard/Dashboard.html.twig' %}
+
+{% block title %}Escritorio (Capítulos: {{ comic }}) - Zona Comix{% endblock %}
+
+{% block container %}
+	<h2 class="sub-header">Capítulos: {{ comic }}</h2>
+
+	<div class="text-center">
+		<p>
+			<a class="btn btn-primary btn-lg" href="{{ path('zona_comix_website_dashboard_new_chapter', {'comic': comic}) }}" role="button">Nuevo Capítulo <span class="glyphicon glyphicon-file" aria-hidden="true"></span></a> 
+	        <a class="btn btn-default btn-lg" href="{{ path('zona_comix_website_dashboard_edit_comic', {'comic': comic}) }}" role="button">Editar Comic <span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+		</p>
+	</div>
+
+	{% for chapter in chapters %}
+	    <div class="col-sm-4 text-center">
+	        <a href="{{ path('zona_comix_website_dashboard_edit_chapter', {'comic': comic, 'chapter': chapter.number}) }}" class="clean-link">
+	        <h3>
+            Capítulo {{ chapter.number }} 
+            {% if chapter.title != "" %}
+             - {{ chapter.title }}
+            {% endif %}
+            </h3>
+	        <p><img src="{{ asset('comics/' ~ chapter.comic.id ~ '/' ~ chapter.number ~ '/0.jpg') }}" class="img-responsive"></p></a>
+	    </div>
+    {% endfor %}
+
+    <div class="col-xs-12">
+	    <nav>
+			<ul class="pager">
+				{% if page > 1 %}
+					<li><a href="{{ path('zona_comix_website_dashboard_chapters', {'page': page - 1, 'comic': comic}) }}">Anterior</a></li>
+				{% endif %}
+				{% if entries == 10 %}
+					<li><a href="{{ path('zona_comix_website_dashboard_chapters', {'page': page + 1, 'comic': comic}) }}">Siguiente</a></li>
+				{% endif %}
+			</ul>
+		</nav>
+	</div>
+{% endblock %}

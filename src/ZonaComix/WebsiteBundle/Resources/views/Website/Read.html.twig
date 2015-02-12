@@ -1,0 +1,177 @@
+{% extends '::WebsiteBase.html.twig' %}
+
+{% block title %}
+	{{ comic.title }} (
+	Capítulo {{ chapter.number }} 
+	{% if chapter.title != "" %}
+	 - {{ chapter.title }}
+	{% endif %}
+	)
+	- Zona Comix
+{% endblock %}
+
+{% block navigation %}
+<nav class="navbar navbar-inverse navbar-fixed-top navbar-reader" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="{{ path('zona_comix_website_cover') }}"><img alt="Brand" height="20" src="{{ asset('images/logo.png') }}"></a>
+		</div>
+		<div id="navbar" class="collapse navbar-collapse">
+			<ul class="nav navbar-nav">
+				{% if comic.style == 1 %}
+					{% if chapter.number > 1 %}
+						<li><a href="{{ path('zona_comix_website_read_chapter', {'comic': comic.title, 'chapter': chapter.number - 1}) }}"><span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true"></span> Capítulo Anterior</a></li>
+					{% endif %}
+					{% if page > 0 %}
+						<li><a href="{{ path('zona_comix_website_read_chapter', {'comic': comic.title, 'chapter': chapter.number, 'page': page - 1}) }}"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Página Anterior</a></li>
+					{% endif %}
+					{% if page < pages %}
+						<li><a href="{{ path('zona_comix_website_read_chapter', {'comic': comic.title, 'chapter': chapter.number, 'page': page + 1}) }}"><span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span> Página Siguiente</a></li>
+					{% endif %}
+					{% if next %}
+						<li><a href="{{ path('zona_comix_website_read_chapter', {'comic': comic.title, 'chapter': chapter.number + 1}) }}"><span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span> Capítulo Siguiente</a></li>
+					{% endif %}
+				{% else %}
+					{% if next %}
+						<li><a href="{{ path('zona_comix_website_read_chapter', {'comic': comic.title, 'chapter': chapter.number + 1}) }}"><span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true"></span> Capítulo Siguiente</a></li>
+					{% endif %}
+					{% if page < pages %}
+						<li><a href="{{ path('zona_comix_website_read_chapter', {'comic': comic.title, 'chapter': chapter.number, 'page': page + 1}) }}"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Página Siguiente</a></li>
+					{% endif %}
+					{% if page > 0 %}
+						<li><a href="{{ path('zona_comix_website_read_chapter', {'comic': comic.title, 'chapter': chapter.number, 'page': page - 1}) }}"><span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span> Página Anterior</a></li>
+					{% endif %}
+					{% if chapter.number > 1 %}
+						<li><a href="{{ path('zona_comix_website_read_chapter', {'comic': comic.title, 'chapter': chapter.number - 1}) }}"><span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span> Capítulo Anterior</a></li>
+					{% endif %}
+				{% endif %}
+
+				<li><a href="{{ path('zona_comix_website_comic', {'comic': comic.title}) }}"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> Lista de Capítulos</a></li>
+				
+		</div>
+		<!--/.nav-collapse -->
+	</div>
+</nav>
+{% endblock %}
+
+{% block body %}
+
+	<div class="reader-bg" id="reader">
+		<img id="image" src="{{ asset('comics/' ~ comic.id ~ '/' ~ chapter.number ~ '/' ~ page ~ '.jpg') }}" class="img-responsive">
+	</div>
+	
+<!-- Modal -->
+<div class="modal fade" id="ReadInstructions" tabindex="-1" role="dialog" aria-labelledby="ReadInstructionsLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="ReadInstructionsLabel">
+					{% if comic.style == 1 %}
+						Comic
+					{% else %}
+						Manga
+					{% endif %}
+					- Instrucciones de lectura
+				</h4>
+			</div>
+			<div class="modal-body">
+				{% if comic.style == 1 %}
+					<p>Este comic tiene un formato de lectura occidental (utilizado en todo el continente Americano y Europa), por lo que el orden de lectura es de izquierda a derecha y de arriba a abajo, al igual que la navegación de las páginas.</p>
+					<p>Puedes cerrar este mensaje para comenzar la lectura.</p>
+					<p><img src="{{ asset('images/comicRead.png') }}" class="img-responsive"></p>
+				{% else %}
+					<p>Este comic tiene un formato de lectura oriental (ampliamente utilizado en el estilo manga), por lo que el orden de lectura es de derecha a izquierda y de arriba a abajo, al igual que la navegación de las páginas.</p>
+					<p>Puedes cerrar este mensaje para comenzar la lectura.</p>
+					<p><img src="{{ asset('images/mangaRead.png') }}" class="img-responsive"></p>
+				{% endif %}
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+				<!-- <button type="button" class="btn btn-primary">Aprender más</button> -->
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
+
+{% block javascript %}
+	{{ parent() }}
+	<script type="text/javascript">
+		$(window).load(function(){
+			if ( {{ page|escape('js') }} == 0 ){
+				$('#ReadInstructions').modal('show');
+			}
+		});
+
+		$(reader).click(function(e) {
+			var width = $(document).width() / 2;
+
+			
+			if ({{ comic.style|escape('js') }} == 1){
+				if (e.clientX < width){
+					previous();
+				}
+				else{
+					next();
+				}
+			}
+			else{
+				if (e.clientX > width){
+					previous();
+				}
+				else{
+					next();
+				}
+			}
+		});
+
+		$(document).keydown(function(e){
+			if ({{ comic.style|escape('js') }} == 1){
+				if (e.keyCode == 37) {
+					previous();
+				}
+				else if (e.keyCode == 39) {
+					next();	
+				}
+			}
+			else{
+				if (e.keyCode == 39) {
+					previous();
+				}
+				else if (e.keyCode == 37) {
+					next();
+				}
+			}
+		});
+
+		function previous(){
+			if ( {{ page|escape('js') }} > 0 ){
+				location.assign("{{ path('zona_comix_website_read_chapter', {'comic': comic.title, 'chapter': chapter.number, 'page': page - 1}) }}");
+				return false;
+			}
+			else if ( {{chapter.number|escape('js') }} > 1 ){
+				location.assign("{{ path('zona_comix_website_read_chapter', {'comic': comic.title, 'chapter': chapter.number - 1}) }}");
+				return false;
+			}
+		}
+
+		function next(){
+			if ( {{ page|escape('js') }} < {{ pages|escape('js') }} ){
+				location.assign("{{ path('zona_comix_website_read_chapter', {'comic': comic.title, 'chapter': chapter.number, 'page': page + 1}) }}");
+				return false;
+			}
+			else if ( {{ next|escape('js') }} ){
+				location.assign("{{ path('zona_comix_website_read_chapter', {'comic': comic.title, 'chapter': chapter.number + 1}) }}");
+				return false;
+			}
+		}
+	</script>
+{% endblock %}

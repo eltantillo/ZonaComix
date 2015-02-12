@@ -1,0 +1,34 @@
+{% extends 'ZonaComixWebsiteBundle:Website:Dashboard/Dashboard.html.twig' %}
+
+{% block title %}Escritorio (Comics) - Zona Comix{% endblock %}
+
+{% block container %}
+	<h2 class="sub-header">Administrar Comics</h2>
+
+	<div class="text-center">
+		<p><a class="btn btn-primary btn-lg" href="{{ path('zona_comix_website_dashboard_new_comic') }}" role="button">Nuevo Comic <span class="glyphicon glyphicon-book" aria-hidden="true"></span></a></p>
+	</div>
+
+	{% for comic in comics %}
+	    <div class="col-sm-4 text-center">
+	        <h3>{{ comic.title }}</h3>
+	        <p><a href="{{ path('zona_comix_website_dashboard_chapters', {'comic': comic.title}) }}"><img src="{{ asset( 'comics/' ~ comic.id ~ '/cover.jpg' ) }}" class="img-responsive"></a></p>
+	        <p>
+	        	<a class="btn btn-primary btn-lg" href="{{ path('zona_comix_website_dashboard_new_chapter', {'comic': comic.title}) }}" role="button">Nuevo Capítulo <span class="glyphicon glyphicon-file" aria-hidden="true"></span></a> 
+	        	<a class="btn btn-default btn-lg" href="{{ path('zona_comix_website_dashboard_edit_comic', {'comic': comic.title}) }}" role="button">Editar <span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+	        </p>
+	    </div>
+    {% endfor %}
+    <div class="col-xs-12">
+	    <nav>
+			<ul class="pager">
+				{% if page > 1 %}
+					<li><a href="{{ path('zona_comix_website_dashboard_comics', {'page': page - 1}) }}">Anterior</a></li>
+				{% endif %}
+				{% if entries == 10 %}
+					<li><a href="{{ path('zona_comix_website_dashboard_comics', {'page': page + 1}) }}">Siguiente</a></li>
+				{% endif %}
+			</ul>
+		</nav>
+	</div>
+{% endblock %}

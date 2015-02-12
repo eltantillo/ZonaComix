@@ -1,0 +1,15 @@
+{% extends 'ZonaComixWebsiteBundle:Website:Mail/BaseMail.html.twig' %}
+
+{% block title %}Gracias por registrarte en Zona Comix{% endblock %}
+
+{% block body %}
+	Tu cuenta aun se encuentra desactivada. Para completar tu registro por favor pulsa el siguiente botón:
+
+	<br><br>
+	
+	<a style="border-radius:3px;display:inline-block;font-size:14px;font-weight:700;line-height:24px;padding:13px 35px 12px 35px;text-align:center;text-decoration:none;color:#fff;font-family:sans-serif;background-color:#1a232b" href="{{ url('zona_comix_website_validate_account', { 'username': username, 'key': key }) }}" target="_blank">Validar Cuenta</a>
+
+	<br><br>
+
+	Nos vemos en Zona Comix.
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends '::WebsiteBase.html.twig' %}
+
+{% block title %}
+    {% if artist.displayName == "" %}
+        {{ artist.username }}
+    {% else %}
+        {{ artist.displayName }}
+    {% endif %}
+     - Zona Comix
+{% endblock %}
+
+{% block body %}
+	<div class="jumbotron text-center">
+            {% if file_exists('avatars/' ~ artist.id ~ '.jpg') %}
+                <img src="{{ asset('avatars/' ~ artist.id ~ '.jpg') }}" class="img-circle small-margin" height="200">
+            {% else %}
+                <img src="{{ asset('images/guest.png') }}" class="img-circle small-margin" height="200">
+            {% endif %}
+            <h1>
+            {% if artist.displayName == "" %}
+                {{ artist.username }}
+            {% else %}
+                {{ artist.displayName }}
+            {% endif %}
+            <br><small>{{ artist.phrase }}</small></h1>
+            <p>{{ followers }} seguidor{% if followers != 1 %}es{% endif %}</p>
+
+            {% if following == false %}
+                <p><a class="btn btn-primary btn-lg" href="{{ path('zona_comix_website_follow_user', {'username': artist.username}) }}" role="button">Seguir <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a></p>
+            {% else %}
+                <p><a class="btn btn-primary btn-lg" href="{{ path('zona_comix_website_unfollow_user', {'username': artist.username}) }}" role="button">Dejar de seguir <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span></a></p>
+            {% endif %}
+            <p><br>
+                {% if artist.website != "" %}
+                    <a href="{{ artist.website }}" target="_blank"><img src="{{ asset('images/social/website.png') }}" class="img-social"></a>
+                {% endif %}
+                {% if artist.facebook != "" %}
+                    <a href="{{ artist.facebook }}" target="_blank"><img src="{{ asset('images/social/facebook.png') }}" class="img-social"></a>
+                {% endif %}
+                {% if artist.twitter != "" %}
+                    <a href="{{ artist.twitter }}" target="_blank"><img src="{{ asset('images/social/twitter.png') }}" class="img-social"></a>
+                {% endif %}
+                {% if artist.google != "" %}
+                    <a href="{{ artist.google }}" target="_blank"><img src="{{ asset('images/social/google.png') }}" class="img-social"></a>
+                {% endif %}
+                {% if artist.tumblr != "" %}
+                    <a href="{{ artist.tumblr }}" target="_blank"><img src="{{ asset('images/social/tumblr.png') }}" class="img-social"></a>
+                {% endif %}
+                {% if artist.deviantart != "" %}
+                    <a href="{{ artist.deviantart }}" target="_blank"><img src="{{ asset('images/social/deviantart.png') }}" class="img-social"></a>
+                {% endif %}
+                {% if artist.youtube != "" %}
+                    <a href="{{ artist.youtube }}" target="_blank"><img src="{{ asset('images/social/youtube.png') }}" class="img-social"></a>
+                {% endif %}
+            </p>
+
+    </div>
+    <div class="container">
+        <div class="row">
+        <h2>Comics Publicados</h2>
+            {% for comic in comics %}
+                <div class="col-sm-4 text-center">
+                    <a href="{{ path('zona_comix_website_read_chapter', {'comic': comic.title}) }}" class="clean-link">
+                    <h3>{{ comic.title }}</h3>
+                    <p><img src="{{ asset('comics/' ~ comic.id ~ '/cover.jpg') }}" class="img-responsive"></p>
+                    </a>
+                    <p><!--<a class="btn btn-primary btn-lg" href="{{ path('zona_comix_website_follow_comic', {'comic': comic.title}) }}" role="button">Seguir <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a> --><a class="btn btn-primary btn-lg" href="{{ path('zona_comix_website_comic', {'comic': comic.title}) }}" role="button">Más información »</a></p>
+                </div>
+            {% endfor %}
+
+            <div class="col-xs-12">
+                <nav>
+                    <ul class="pager">
+                        {% if page > 1 %}
+                            <li ><a href="{{ path('zona_comix_website_user', {'page': page - 1, 'username': artist.username}) }}">Anterior</a></li>
+                        {% endif %}
+                        {% if entries == 10 %}
+                            <li><a href="{{ path('zona_comix_website_user', {'page': page + 1, 'username': artist.username}) }}">Siguiente</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+{% endblock %}

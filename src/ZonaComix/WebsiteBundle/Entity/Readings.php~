@@ -1,0 +1,35 @@
+<?php
+namespace ZonaComix\WebsiteBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="readings")
+ */
+
+class Readings
+{
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="readings")
+     */
+    protected $user;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Comic", inversedBy="readings")
+     */
+    protected $comic;
+
+	/**
+	 * @ORM\Id
+	 * @ORM\Column(type="integer", options={"unsigned"=true})
+	 * @ORM\GeneratedValue(strategy="AUTO")
+	 */
+	protected $id;
+    /** @ORM\Column(type="integer", options={"unsigned"=true}) */
+    protected $chapter = 1;
+    /** @ORM\Column(type="integer", options={"unsigned"=true}) */
+    protected $page = 1;
+    /** @ORM\Column(type="integer", options={"unsigned"=true}) */
+    protected $panel = 1;
+}

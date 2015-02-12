@@ -1,0 +1,16 @@
+{% extends '::WebsiteBase.html.twig' %}
+
+{% block title %}Registro (Completo) - Zona Comix{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <h1>Gracias por registrarte</h1>
+            <legend>Revisa tu correo electrónico</legend>
+            <div class="jumbotron">
+                <p>En unos momentos recibirás un correo electrónico de contacto@zonacomix.com para validar tu cuenta. No podrás publicar comics en el sitio hasta que hayas pulsado el enlace del correo electrónico para validar tu cuenta. Si no encuentras el correo en tu bandeja de entrada revisa la bandeja de spam o correo no deseado.</p>
+                <p><a class="btn btn-primary btn-lg" href="{{ path('zona_comix_website_cover') }}" role="button">Volver al inicio <span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

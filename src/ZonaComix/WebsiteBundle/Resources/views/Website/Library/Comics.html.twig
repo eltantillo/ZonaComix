@@ -1,0 +1,39 @@
+{% extends 'ZonaComixWebsiteBundle:Website:Library/Library.html.twig' %}
+
+{% block title %}Librería (Comics) - Zona Comix{% endblock %}
+
+{% block content %}
+    <h2 class="sub-header text-left">Comics que estás siguiendo</h2>
+    {% for comic in comics %}
+        {% set chapter = 1 %}
+        {% set page = 0 %}
+
+        {% for reading in readings %}
+            {% if reading.user == user and reading.comic == comic %}
+                {% set chapter = reading.chapter %}
+                {% set page = reading.page %}
+            {% endif %}
+        {% endfor %}
+
+        <div class="col-sm-4 text-center">
+            <a href="{{ path('zona_comix_website_read_chapter', {'comic': comic.title, 'chapter': chapter, 'page': page}) }}" class="clean-link">
+                <h3>{{ comic.title }}</h3>
+                <p><img src="{{ asset('comics/' ~ comic.id ~ '/cover.jpg') }}" class="img-responsive"></p>
+            </a>
+            <p><a class="btn btn-primary btn-lg" href="{{ path('zona_comix_website_unfollow_comic', {'comic': comic.title}) }}" role="button">Dejar de Seguir <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span></a></p>
+        </div>
+    {% endfor %}
+
+    <div class="col-xs-12">
+        <nav>
+            <ul class="pager">
+                {% if page > 1 %}
+                    <li><a href="{{ path('zona_comix_website_library_comics', {'page': page - 1}) }}">Anterior</a></li>
+                {% endif %}
+                {% if entries == 10 %}
+                    <li><a href="{{ path('zona_comix_website_library_comics', {'page': page + 1}) }}">Siguiente</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+{% endblock %}

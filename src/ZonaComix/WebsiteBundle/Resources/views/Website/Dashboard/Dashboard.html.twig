@@ -1,0 +1,39 @@
+{% extends '::WebsiteBase.html.twig' %}
+
+{% block title %}Escritorio - Zona Comix{% endblock %}
+
+{% block body %}
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar">
+				<ul class="nav nav-sidebar">
+					<li><a href="{{ path('zona_comix_website_dashboard_profile') }}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Perfil</a></li>
+					<li><a href="{{ path('zona_comix_website_dashboard_comics') }}"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Comics</a></li>
+					<li><a href="{{ path('zona_comix_website_dashboard_revenue') }}"><span class="glyphicon glyphicon-piggy-bank" aria-hidden="true"></span> Balance</a></li>
+					<li><a href="{{ path('zona_comix_website_dashboard_referral') }}"><span class="glyphicon glyphicon-usd" aria-hidden="true"></span> Programa de Referidos</a></li>
+				</ul>
+			</div>
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+				<div class="row placeholder-nav">
+					<div class="col-xs-3 placeholder">
+						<a href="{{ path('zona_comix_website_dashboard_profile') }}"><span class="glyphicon glyphicon-user glyphiconbig" aria-hidden="true"></span>
+						<h4>Perfil</h4></a>
+					</div>
+					<div class="col-xs-3 placeholder">
+						<a href="{{ path('zona_comix_website_dashboard_comics') }}"><span class="glyphicon glyphicon-book glyphiconbig" aria-hidden="true"></span>
+						<h4>Comics</h4></a>
+					</div>
+					<div class="col-xs-3 placeholder">
+						<a href="{{ path('zona_comix_website_dashboard_revenue') }}"><span class="glyphicon glyphicon-piggy-bank glyphiconbig" aria-hidden="true"></span>
+						<h4>Balance</h4></a>
+					</div>
+					<div class="col-xs-3 placeholder">
+						<a href="{{ path('zona_comix_website_dashboard_referral') }}"><span class="glyphicon glyphicon-usd glyphiconbig" aria-hidden="true"></span>
+						<h4>Programa de Referidos</h4></a>
+					</div>
+				</div>
+				{% block container %}{% endblock %}
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'ZonaComixWebsiteBundle:Website:Library/Library.html.twig' %}
+
+{% block title %}Librería (Usuarios) - Zona Comix{% endblock %}
+
+{% block content %}
+    <h2 class="sub-header text-left">Usuarios que estás siguiendo</h2>
+    {% for artist in artists %}
+        <div class="col-sm-4 text-center">
+            <h3>
+            {% if artist.displayName == "" %}
+                {{ artist.username }}
+            {% else %}
+                {{ artist.displayName }}
+            {% endif %}
+            </h3>
+            <p>
+            {% if file_exists('avatars/' ~ artist.id ~ '.jpg') %}
+                <img src="{{ asset('avatars/' ~ artist.id ~ '.jpg') }}" class="img-circle small-margin" height="200">
+            {% else %}
+                <img src="{{ asset('images/guest.png') }}" class="img-circle small-margin" height="200">
+            {% endif %}
+            </p>
+            <p><a class="btn btn-primary btn-lg" href="{{ path('zona_comix_website_unfollow_user', {'username': artist.username}) }}" role="button">Dejar de Seguir <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span></a></p>
+        </div>
+    {% endfor %}
+
+    <div class="col-xs-12">
+        <nav>
+            <ul class="pager">
+                {% if page > 1 %}
+                    <li><a href="{{ path('zona_comix_website_library_users', {'page': page - 1, 'username': artist.username}) }}">Anterior</a></li>
+                {% endif %}
+                {% if entries == 10 %}
+                    <li><a href="{{ path('zona_comix_website_library_users', {'page': page + 1, 'username': artist.username}) }}">Siguiente</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+{% endblock %}

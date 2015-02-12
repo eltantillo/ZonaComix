@@ -1,0 +1,12 @@
+{% extends 'ZonaComixWebsiteBundle:Website:Dashboard/Dashboard.html.twig' %}
+
+{% block title %}Escritorio (Error) - Zona Comix{% endblock %}
+
+{% block container %}
+        <div class="row">
+            <h1 class="page-header">El contenido es inaccesible</h1>
+            <div class="jumbotron">
+                <p>No se puede mostrar el contenido al que estás intentando acceder. pulsa <a href="{{ path('zona_comix_website_dashboard') }}">aquí</a> para volver al escritorio.</p>
+            </div>
+        </div>
+{% endblock %}
