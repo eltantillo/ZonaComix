@@ -1,0 +1,19 @@
+{% extends 'ZonaComixWebsiteBundle:Website:Dashboard/Dashboard.html.twig' %}
+
+{% block title %}Escritorio (Maquetar Capítulo {{ chapter.number }} de {{ chapter.comic.title }}) - Zona Comix{% endblock %}
+
+{% block container %}
+	<h2 class="sub-header">Maquetar Capítulo {{ chapter.number }} de {{ chapter.comic.title }}</h2>
+	<div class="form-container">
+		<div class="row">
+			<iframe src="{{ asset('PanelsModeler/PanelModel.html') }}"></iframe>
+
+			<div class="col-sm-12 text-center">
+			<br>
+			<a class="btn btn-primary btn-lg" href="{{ path('zona_comix_website_dashboard_chapters', {'comic': chapter.comic.title}) }}" role="button">Finalizar</span></a> 
+			</div>
+		</div>
+	</div>
+
+	
+{% endblock %}

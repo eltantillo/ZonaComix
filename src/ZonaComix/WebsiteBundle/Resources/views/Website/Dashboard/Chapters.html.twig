@@ -22,6 +22,9 @@
             {% endif %}
             </h3>
 	        <p><img src="{{ asset('comics/' ~ chapter.comic.id ~ '/' ~ chapter.number ~ '/0.jpg') }}" class="img-responsive"></p></a>
+
+	        <a class="btn btn-primary btn-lg" href="{{ path('zona_comix_website_dashboard_model_chapter', {'comic': chapter.comic.id, 'chapter': chapter.number, 'pages': chapter.pages}) }}" role="button">Maquetar Páneles <span class="glyphicon glyphicon-picture" aria-hidden="true"></span></a> 
+
 	    </div>
     {% endfor %}
 

@@ -170,7 +170,7 @@ class DashboardController extends Controller
 		$user     = $this->getUser();
 		$comic    = $em->getRepository('ZonaComixWebsiteBundle:Comic')->findOneByTitle( $comic );
 		$chapters = $em->getRepository('ZonaComixWebsiteBundle:Chapter')->findByComic( $comic, array('number' => 'DESC'), 10,( $page - 1 ) * 9 );
-		
+
 		if( $comic->getUser() == $user ){
 			$chaptersTotal = count($chapters);
 
@@ -344,12 +344,7 @@ class DashboardController extends Controller
 			$chapters = $em->getRepository('ZonaComixWebsiteBundle:Chapter')->findByComic( $comic );
 
 			$chapter->setComic( $comic );
-			//$chapter->setPublishDate( $now );
 			$chapter->setNumber( count( $chapters ) + 1 );
-			//$chapter->setReadings( 0 );
-
-			$em->persist($chapter);
-			$em->flush();
 
 			$NewDir = 'comics/' . $comic->getId() . '/' . $chapter->getNumber();
 			$fs = new Filesystem();
@@ -384,8 +379,11 @@ class DashboardController extends Controller
 			for ($i = 0; $i < count( $files ); $i++) {
 				rename( $NewDir . '/' . $files[$i], $NewDir . '/' . $i.".jpg" );
 			}
+			$chapter->setPages( count( $files ) );
+			$em->persist($chapter);
+			$em->flush();
 
-			return $this->redirect($this->generateUrl('zona_comix_website_dashboard_chapters', array( 'comic' => $comic->getTitle() )));
+			return $this->redirect($this->generateUrl('zona_comix_website_dashboard_model_chapter', array('comic' => $comic->getId(), 'chapter' => $chapter->getNumber(), 'pages' => count( $files ))));
 		}
 
 		return $this->render('ZonaComixWebsiteBundle:Website:Dashboard/NewChapter.html.twig', array(
@@ -530,11 +528,6 @@ class DashboardController extends Controller
 			$form->handleRequest($request);
 
 			if ($form->isValid()) {
-
-				$em->persist($chapter);
-				$em->flush();
-
-
 				if ($form['file']->getData() != null){
 					$NewDir = 'comics/' . $comic->getId() . '/' . $chapter->getNumber();
 
@@ -572,7 +565,10 @@ class DashboardController extends Controller
 					for ($i = 0; $i < count( $files ); $i++) {
 						rename( $NewDir . '/' . $files[$i], $NewDir . '/' . $i.".jpg" );
 					}
+					$chapter->setPages( count( $files ) );
 				}
+				$em->persist($chapter);
+				$em->flush();
 
 				return $this->redirect($this->generateUrl('zona_comix_website_dashboard_chapters', array( 'comic' => $comic->getTitle() )));
 			}
@@ -581,6 +577,26 @@ class DashboardController extends Controller
 				'chapter' => $chapter,
 				'form'    => $form->createView(),
 			));
+		}
+		else{
+			return $this->render('ZonaComixWebsiteBundle:Website:Dashboard/AccessViolation.html.twig');
+		}
+	}
+
+	public function ModelChapterAction($comic, $chapter, $pages)
+	{
+		$em      = $this->getDoctrine()->getManager();
+		$comic   = $em->getRepository('ZonaComixWebsiteBundle:Comic')->findOneById( $comic );
+		$chapter = $em->getRepository('ZonaComixWebsiteBundle:Chapter')->findOneBy( array(
+			'comic'  => $comic,
+			'number' => $chapter
+		));
+		$user    = $this->getUser();
+
+		if( $comic->getUser() == $user ){
+			return $this->render('ZonaComixWebsiteBundle:Website:Dashboard/ModelChapter.html.twig', array(
+				'chapter' => $chapter
+				));
 		}
 		else{
 			return $this->render('ZonaComixWebsiteBundle:Website:Dashboard/AccessViolation.html.twig');

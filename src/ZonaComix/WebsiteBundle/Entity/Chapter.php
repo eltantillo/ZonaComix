@@ -24,6 +24,8 @@ class Chapter
 	protected $id;
 	/** @ORM\Column(type="integer", options={"unsigned"=true}) */
 	protected $number;
+    /** @ORM\Column(type="integer", options={"unsigned"=true}) */
+    protected $pages;
 	/** @ORM\Column(type="string", length=64, nullable=true) */
 	protected $title;
     /** @ORM\Column(type="datetime") */
@@ -183,5 +185,28 @@ class Chapter
     public function getVisible()
     {
         return $this->visible;
+    }
+
+    /**
+     * Set pages
+     *
+     * @param integer $pages
+     * @return Chapter
+     */
+    public function setPages($pages)
+    {
+        $this->pages = $pages;
+
+        return $this;
+    }
+
+    /**
+     * Get pages
+     *
+     * @return integer 
+     */
+    public function getPages()
+    {
+        return $this->pages;
     }
 }

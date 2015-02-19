@@ -1,5 +1,0 @@
-_assetic:
-    resource: .
-    type: assetic
-_app:
-    resource: /srv/www/ZonaComix/app/config/routing_dev.yml

@@ -293,4 +293,37 @@ class Comic
     {
         return $this->chapters;
     }
+
+    /**
+     * Add readings
+     *
+     * @param \ZonaComix\WebsiteBundle\Entity\Reading $readings
+     * @return Comic
+     */
+    public function addReading(\ZonaComix\WebsiteBundle\Entity\Reading $readings)
+    {
+        $this->readings[] = $readings;
+
+        return $this;
+    }
+
+    /**
+     * Remove readings
+     *
+     * @param \ZonaComix\WebsiteBundle\Entity\Reading $readings
+     */
+    public function removeReading(\ZonaComix\WebsiteBundle\Entity\Reading $readings)
+    {
+        $this->readings->removeElement($readings);
+    }
+
+    /**
+     * Get readings
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getReadings()
+    {
+        return $this->readings;
+    }
 }

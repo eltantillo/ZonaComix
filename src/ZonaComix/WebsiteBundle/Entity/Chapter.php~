@@ -24,6 +24,8 @@ class Chapter
 	protected $id;
 	/** @ORM\Column(type="integer", options={"unsigned"=true}) */
 	protected $number;
+    /** @ORM\Column(type="integer", options={"unsigned"=true}) */
+    protected $pages;
 	/** @ORM\Column(type="string", length=64, nullable=true) */
 	protected $title;
     /** @ORM\Column(type="datetime") */

@@ -42,6 +42,10 @@ zona_comix_website_dashboard_new_chapter:
     path:     /escritorio/nuevo/{comic}/
     defaults: { _controller: ZonaComixWebsiteBundle:Dashboard:NewChapter }
 
+zona_comix_website_dashboard_model_chapter:
+    path:     /escritorio/maquetar/{comic}/{chapter}/{pages}/
+    defaults: { _controller: ZonaComixWebsiteBundle:Dashboard:ModelChapter }
+
 zona_comix_website_dashboard_referral:
     path:     /escritorio/referidos/
     defaults: { _controller: ZonaComixWebsiteBundle:Dashboard:Referral }

@@ -6,6 +6,24 @@ html, body {
     height: 100%;
 }
 
+iframe {
+    display: block;
+    width: 640px;
+    height: 320px;
+    margin: 0 auto;
+    border: 0;
+}
+
+div.gm4html5_div_class{
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin-left: -320px;
+	margin-top: -160px;
+	padding: 0px;
+	border: 0px;
+}
+
 .footer{
 	padding: 10px;
 	color: #9d9d9d;

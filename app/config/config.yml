@@ -67,7 +67,6 @@ doctrine:
 swiftmailer:
     transport:  %mailer_transport%
     encryption: %mailer_encryption%
-    auth_mode: login
     host:       %mailer_host%
     port:       %mailer_port%
     username:   %mailer_user%

@@ -1,22 +1,21 @@
 # This file is auto-generated during the composer install
 parameters:
     database_driver: pdo_mysql
-    database_host: 127.0.0.1
-    database_port: null
+    database_host: localhost
+    database_port: '3306'
     database_name: zonacomix
     database_user: root
-    database_password: rumble1289
-    
+    database_password: null
+
     mailer_transport: smtp
     mailer_host: p3plcpnl0926.prod.phx3.secureserver.net
-    mailer_user: eltantillo
-    mailer_password: Rumble1289
+    mailer_user: 'eltantillo'
+    mailer_password: 'Rumble1289'
     mailer_port: 465
     mailer_encryption: ssl
-    
+
     locale: es
     secret: TokenZonaComixToken
     debug_toolbar: true
     debug_redirects: false
     use_assetic_controller: true
-
