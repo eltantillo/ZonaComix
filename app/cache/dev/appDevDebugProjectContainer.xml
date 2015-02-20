@@ -32,7 +32,7 @@
     <parameter key="database_port">3306</parameter>
     <parameter key="database_name">zonacomix</parameter>
     <parameter key="database_user">root</parameter>
-    <parameter key="database_password">null</parameter>
+    <parameter key="database_password">Rumble1289</parameter>
     <parameter key="mailer_transport">smtp</parameter>
     <parameter key="mailer_host">p3plcpnl0926.prod.phx3.secureserver.net</parameter>
     <parameter key="mailer_user">eltantillo</parameter>
@@ -2578,7 +2578,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>54e5abc84cca6</argument>
+            <argument>54e5ace5d5459</argument>
           </service>
         </argument>
       </argument>
@@ -2941,7 +2941,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>54e5abc84cca6</argument>
+            <argument>54e5ace5d5459</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
           </service>
         </argument>
@@ -3322,7 +3322,7 @@
         <argument key="port">3306</argument>
         <argument key="dbname">zonacomix</argument>
         <argument key="user">root</argument>
-        <argument key="password">null</argument>
+        <argument key="password">Rumble1289</argument>
         <argument key="charset">UTF8</argument>
         <argument key="driverOptions" type="collection"/>
       </argument>

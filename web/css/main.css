@@ -10,7 +10,7 @@ iframe {
     display: block;
     width: 640px;
     height: 320px;
-    margin: 0 auto;
+    margin: 5 solid #222222;
     border: 0;
 }
 

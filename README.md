@@ -16,8 +16,8 @@ php app/console doctrine:schema:update --force
  - Escribir las políticas
  - Programar un sistema de cambio de correo electrónico
  - Programar un sistema de cambio de contraseña
- - Agregarle botones de mover e insertar a los paneles
- - Agregarle opción de color de fondo**
+ - En el modelador mostrar para que sirven cada uno de los botones
+ - En el modelador el panel seleccionado se deselecciona si se presiona alguno de los botones
  - Al validar la cuenta que el boton te lleve al login en vez del inicio
  - Poner un boton para retirar los fondos en el balance
  - Arreglar la resta de fondos a la hora de calcular cuanto le pertenece a los referidos
