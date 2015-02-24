@@ -21,6 +21,7 @@ php app/console doctrine:schema:update --force
  - Al validar la cuenta que el boton te lleve al login en vez del inicio
  - Poner un boton para retirar los fondos en el balance
  - Arreglar la resta de fondos a la hora de calcular cuanto le pertenece a los referidos
+ - Quitarle un número al total de archivos en las páginas de la base de datos
 
  - Hay un error si se trata de escanear un folder que no existe **
 
