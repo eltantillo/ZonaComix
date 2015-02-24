@@ -7,11 +7,10 @@ html, body {
 }
 
 iframe {
-    display: block;
+    display: inline-block;
     width: 640px;
     height: 320px;
-    margin: 5 solid #222222;
-    border: 0;
+    border: 5px solid #222222;
 }
 
 div.gm4html5_div_class{

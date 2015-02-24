@@ -1,5 +1,5 @@
 # ZonaComix
-Repositorio de Zona Comix 
+Repositorio de ZonaComix 
 
 ##Doctrine
 Genrar entidad:
@@ -12,15 +12,12 @@ crear tablas
 php app/console doctrine:schema:update --force
 
 ##Lista de trabajo
- - Escribir los beneficios de publicar con ZonaComix
  - Escribir las políticas
  - Programar un sistema de cambio de correo electrónico
  - Programar un sistema de cambio de contraseña
  - En el modelador mostrar para que sirven cada uno de los botones
  - En el modelador el panel seleccionado se deselecciona si se presiona alguno de los botones
- - Al validar la cuenta que el boton te lleve al login en vez del inicio
- - Poner un boton para retirar los fondos en el balance
- - Arreglar la resta de fondos a la hora de calcular cuanto le pertenece a los referidos
+ - Poner un boton para retirar los fondos en el balance *
  - Quitarle un número al total de archivos en las páginas de la base de datos
 
  - Hay un error si se trata de escanear un folder que no existe **
@@ -44,5 +41,4 @@ php app/console doctrine:schema:update --force
  - 20,000 visitas diarias
 
 ##Textos pendientes
-¿Como Funciona Zona Comix?
-Zona Comix genera dinero con la publicidad que se muestra en el sitio y especialmente en los comics que publican sus usuarios, pero a diferencia de la mayoría de los sitios, Zona Comix desea compartir estas ganancias con aquellos que las hacen posibles. De todo el dinero que se genere con el tráfico de tus comics Zona Comix compartirá el 30% del total acumulado.
+¿Como Funciona ZonaComix?

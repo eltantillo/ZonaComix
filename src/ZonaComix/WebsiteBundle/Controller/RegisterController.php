@@ -77,7 +77,7 @@ class RegisterController extends Controller
 			$imgUrl = $message->embed(\Swift_Image::fromPath('images/FullLogo.png'));
 			$message
 			->setSubject('Validación de tu cuenta')
-			->setFrom(array('contacto@zonacomix.com' => 'Zona Comix'))
+			->setFrom(array('contacto@zonacomix.com' => 'ZonaComix'))
 			->setTo( $user->getEmail() )
 			->setContentType("text/html")
 			->setBody(
@@ -124,8 +124,8 @@ class RegisterController extends Controller
 			$message = \Swift_Message::newInstance();
 			$imgUrl = $message->embed(\Swift_Image::fromPath('images/FullLogo.png'));
 			$message
-			->setSubject('Bienvenido a Zona Comix')
-			->setFrom(array('contacto@zonacomix.com' => 'Zona Comix'))
+			->setSubject('Bienvenido a ZonaComix')
+			->setFrom(array('contacto@zonacomix.com' => 'ZonaComix'))
 			->setTo( $user->getEmail() )
 			->setContentType("text/html")
 			->setBody(

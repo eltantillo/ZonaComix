@@ -288,7 +288,7 @@ class DashboardController extends Controller
 			$imgUrl = $message->embed(\Swift_Image::fromPath('images/FullLogo.png'));
 			$message
 			->setSubject('Validación de tu cuenta')
-			->setFrom(array('contacto@zonacomix.com' => 'Zona Comix'))
+			->setFrom(array('contacto@zonacomix.com' => 'ZonaComix'))
 			->setTo( $user->getEmail() )
 			->setContentType("text/html")
 			->setBody(
@@ -379,7 +379,7 @@ class DashboardController extends Controller
 			for ($i = 0; $i < count( $files ); $i++) {
 				rename( $NewDir . '/' . $files[$i], $NewDir . '/' . $i.".jpg" );
 			}
-			$chapter->setPages( count( $files ) );
+			$chapter->setPages( count( $files ) - 1 );
 			$em->persist($chapter);
 			$em->flush();
 
