@@ -1,0 +1,39 @@
+[20-Feb-2015 23:31:51 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException' with message 'You have requested a non-existent parameter "mailer_encryption".' in /home/eltantillo/public_html/ZonaComix/vendor/symfony/symfony/src/Symfony/Component/DependencyInjection/ParameterBag/ParameterBag.php:106
+Stack trace:
+#0 /home/eltantillo/public_html/ZonaComix/vendor/symfony/symfony/src/Symfony/Component/DependencyInjection/ParameterBag/ParameterBag.php(232): Symfony\Component\DependencyInjection\ParameterBag\ParameterBag->get('mailer_encrypti...')
+#1 /home/eltantillo/public_html/ZonaComix/vendor/symfony/symfony/src/Symfony/Component/DependencyInjection/ParameterBag/ParameterBag.php(203): Symfony\Component\DependencyInjection\ParameterBag\ParameterBag->resolveString('%mailer_encrypt...', Array)
+#2 /home/eltantillo/public_html/ZonaComix/vendor/symfony/symfony/src/Symfony/Component/DependencyInjection/ParameterBag/ParameterBag.php(193): Symfony\Component\DependencyInjection\ParameterBag\ParameterBag->r in /home/eltantillo/public_html/ZonaComix/vendor/symfony/symfony/src/Symfony/Component/DependencyInjection/ParameterBag/ParameterBag.php on line 106
+[20-Feb-2015 23:44:11 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/eltantillo/public_html/ZonaComix/app/cache/prod/appProdUrlMatcher.php:552
+Stack trace:
+#0 /home/eltantillo/public_html/ZonaComix/app/cache/prod/classes.php(1364): appProdUrlMatcher->match('/comics/1/1/0.j...')
+#1 /home/eltantillo/public_html/ZonaComix/app/cache/prod/classes.php(1257): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/eltantillo/public_html/ZonaComix/app/cache/prod/classes.php(1964): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/eltantillo/public_html/ZonaComix/app/cache/prod/classes.php(1750): call_user_func(Array, Object(Symfony\ in /home/eltantillo/public_html/ZonaComix/app/cache/prod/classes.php on line 1980
+[20-Feb-2015 23:45:00 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/eltantillo/public_html/ZonaComix/app/cache/prod/appProdUrlMatcher.php:552
+Stack trace:
+#0 /home/eltantillo/public_html/ZonaComix/vendor/symfony/symfony/src/Symfony/Component/Routing/Matcher/UrlMatcher.php(106): appProdUrlMatcher->match('/comics/1/1/0.j...')
+#1 /home/eltantillo/public_html/ZonaComix/vendor/symfony/symfony/src/Symfony/Component/Routing/Router.php(233): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/eltantillo/public_html/ZonaComix/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/EventListener/RouterListener.php(125): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ in /home/eltantillo/public_html/ZonaComix/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/EventListener/RouterListener.php on line 145
+[20-Feb-2015 23:46:53 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/eltantillo/public_html/ZonaComix/app/cache/prod/appProdUrlMatcher.php:552
+Stack trace:
+#0 /home/eltantillo/public_html/ZonaComix/app/cache/prod/classes.php(1364): appProdUrlMatcher->match('/comics/1/1/6.j...')
+#1 /home/eltantillo/public_html/ZonaComix/app/cache/prod/classes.php(1257): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/eltantillo/public_html/ZonaComix/app/cache/prod/classes.php(1964): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/eltantillo/public_html/ZonaComix/app/cache/prod/classes.php(1750): call_user_func(Array, Object(Symfony\ in /home/eltantillo/public_html/ZonaComix/app/cache/prod/classes.php on line 1980
+[20-Feb-2015 23:51:56 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/eltantillo/public_html/ZonaComix/app/cache/prod/appProdUrlMatcher.php:552
+Stack trace:
+#0 /home/eltantillo/public_html/ZonaComix/app/cache/prod/classes.php(1364): appProdUrlMatcher->match('/css/bootstrapV...')
+#1 /home/eltantillo/public_html/ZonaComix/app/cache/prod/classes.php(1257): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/eltantillo/public_html/ZonaComix/app/cache/prod/classes.php(1964): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/eltantillo/public_html/ZonaComix/app/cache/prod/classes.php(1750): call_user_func(Array, Object(Symfony\ in /home/eltantillo/public_html/ZonaComix/app/cache/prod/classes.php on line 1980
+[20-Feb-2015 23:52:40 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/eltantillo/public_html/ZonaComix/app/cache/prod/appProdUrlMatcher.php:552
+Stack trace:
+#0 /home/eltantillo/public_html/ZonaComix/app/cache/prod/classes.php(1364): appProdUrlMatcher->match('/css/bootstrapV...')
+#1 /home/eltantillo/public_html/ZonaComix/app/cache/prod/classes.php(1257): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/eltantillo/public_html/ZonaComix/app/cache/prod/classes.php(1964): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/eltantillo/public_html/ZonaComix/app/cache/prod/classes.php(1750): call_user_func(Array, Object(Symfony\ in /home/eltantillo/public_html/ZonaComix/app/cache/prod/classes.php on line 1980
