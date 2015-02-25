@@ -53,7 +53,7 @@ class ReadController extends Controller
 
 			$files = scandir( 'comics/' . $comic->getId() . '/' . $chapter->getNumber() );
 			$files = array_values($files);
-			$pages = count($files) - 4;
+			$pages = $chapter->getPages();
 
 	        $next  = 0;
 			if (file_exists( 'comics/' . $comic->getId() . '/' . ($chapter->getNumber() + 1) . '/' )){
@@ -61,15 +61,18 @@ class ReadController extends Controller
 			}
 
 			if ($user != null){
+				$now = new \DateTime(date('d-m-Y H:i:s', time()));
 				$reading = $em->getRepository('ZonaComixWebsiteBundle:Reading')->findOneBy( array( 'user' => $user, 'comic' => $comic ) );
 				if ($reading != null){
 					if ($reading->getChapter() < $chapter->getNumber()){
 						$reading->setChapter( $chapter->getNumber() );
 						$reading->setPage( $page );
+						$reading->setUpdateDate( $now );
 						$em->persist( $reading );
 					}
 					else if ( $reading->getChapter() == $chapter->getNumber() && $reading->getPage() < $page ){
 						$reading->setPage( $page );
+						$reading->setUpdateDate( $now );
 						$em->persist( $reading );
 					}
 				}

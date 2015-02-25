@@ -25,7 +25,6 @@ php app/console doctrine:schema:update --force
  - alinear la altura de los listados de comics/usuarios
  - Mejorar el avatar del usuario
  - El navbar al ir escalando se deforma en un punto
- - Mostrar en la primera página de la librería los últimos comics que estuve leyendo y poner un boton para borrarlos
 
  - Programar el pago automático con paypal
  - Diseñar y programar el admincp

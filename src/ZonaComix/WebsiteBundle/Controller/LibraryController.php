@@ -11,7 +11,7 @@ class LibraryController extends Controller
     {
     	$em   = $this->getDoctrine()->getManager();
         $user = $this->getUser();
-        $readings = $em->getRepository('ZonaComixWebsiteBundle:Reading')->findByuser( $user );
+        $readings = $em->getRepository('ZonaComixWebsiteBundle:Reading')->findByuser( $user, array('update_date' => 'DESC'), 10 );
 
         return $this->render('ZonaComixWebsiteBundle:Website:Library/Library.html.twig', array(
             'user'     => $user,
@@ -28,7 +28,7 @@ class LibraryController extends Controller
             array_push( $artists, $artist->getId() );
         }
 
-        $artists = $em->getRepository('ZonaComixWebsiteBundle:User')->findById( $artists, array(), 10,( $page - 1 ) * 9 );
+        $artists = $em->getRepository('ZonaComixWebsiteBundle:User')->findById( $artists, array(), 10, ( $page - 1 ) * 9 );
 
         $artistsTotal = count( $artists );
         if ($artistsTotal > 10){
@@ -51,7 +51,7 @@ class LibraryController extends Controller
             array_push( $comics, $comic->getId() );
         }
 
-        $comics = $em->getRepository('ZonaComixWebsiteBundle:Comic')->findById( $comics, array(), 10,( $page - 1 ) * 9 );
+        $comics = $em->getRepository('ZonaComixWebsiteBundle:Comic')->findById( $comics, array(), 10, ( $page - 1 ) * 9 );
 
         $comicsTotal = count( $comics );
         if ($comicsTotal > 10){

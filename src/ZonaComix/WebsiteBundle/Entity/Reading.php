@@ -26,12 +26,19 @@ class Reading
 	 * @ORM\GeneratedValue(strategy="AUTO")
 	 */
 	protected $id;
+    /** @ORM\Column(type="datetime") */
+    protected $update_date;
     /** @ORM\Column(type="integer", options={"unsigned"=true}) */
     protected $chapter = 1;
     /** @ORM\Column(type="integer", options={"unsigned"=true}) */
     protected $page    = 0;
     /** @ORM\Column(type="integer", options={"unsigned"=true}) */
     protected $panel   = 0;
+
+    //Constructor
+    public function __construct(){
+        $this->update_date = new \DateTime(date('d-m-Y H:i:s', time()));
+    }
 
     /**
      * Get id
@@ -156,5 +163,28 @@ class Reading
     public function getComic()
     {
         return $this->comic;
+    }
+
+    /**
+     * Set update_date
+     *
+     * @param \DateTime $updateDate
+     * @return Reading
+     */
+    public function setUpdateDate($updateDate)
+    {
+        $this->update_date = $updateDate;
+
+        return $this;
+    }
+
+    /**
+     * Get update_date
+     *
+     * @return \DateTime 
+     */
+    public function getUpdateDate()
+    {
+        return $this->update_date;
     }
 }

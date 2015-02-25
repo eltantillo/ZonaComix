@@ -26,12 +26,19 @@ class Reading
 	 * @ORM\GeneratedValue(strategy="AUTO")
 	 */
 	protected $id;
+    /** @ORM\Column(type="datetime") */
+    protected $update_date;
     /** @ORM\Column(type="integer", options={"unsigned"=true}) */
     protected $chapter = 1;
     /** @ORM\Column(type="integer", options={"unsigned"=true}) */
     protected $page    = 0;
     /** @ORM\Column(type="integer", options={"unsigned"=true}) */
     protected $panel   = 0;
+
+    //Constructor
+    public function __construct(){
+        $this->update = new \DateTime(date('d-m-Y H:i:s', time()));
+    }
 
     /**
      * Get id
