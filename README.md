@@ -18,7 +18,8 @@ php app/console doctrine:schema:update --force
  - En el modelador mostrar para que sirven cada uno de los botones
  - En el modelador el panel seleccionado se deselecciona si se presiona alguno de los botones
  - Poner un boton para retirar los fondos en el balance *
- - Quitarle un número al total de archivos en las páginas de la base de datos
+ - Cambiar las clasificaciones
+ - Actualizar el maquetador para que no reste número al total de páginas
 
  - Hay un error si se trata de escanear un folder que no existe **
 
