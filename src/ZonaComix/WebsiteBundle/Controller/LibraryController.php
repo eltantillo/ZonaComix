@@ -3,6 +3,7 @@
 namespace ZonaComix\WebsiteBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use ZonaComix\WebsiteBundle\Entity\Reading;
 
 class LibraryController extends Controller
 {
@@ -10,9 +11,11 @@ class LibraryController extends Controller
     {
     	$em   = $this->getDoctrine()->getManager();
         $user = $this->getUser();
+        $readings = $em->getRepository('ZonaComixWebsiteBundle:Reading')->findByuser( $user );
 
         return $this->render('ZonaComixWebsiteBundle:Website:Library/Library.html.twig', array(
-        	'user' => $user
+            'user'     => $user,
+            'readings' => $readings,
         	));
     }
 

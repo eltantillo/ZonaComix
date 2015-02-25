@@ -166,9 +166,9 @@ class DashboardController extends Controller
 	
 	public function ChaptersAction($comic, $page)
 	{
-		$em       = $this->getDoctrine()->getManager();
-		$user     = $this->getUser();
-		$comic    = $em->getRepository('ZonaComixWebsiteBundle:Comic')->findOneByTitle( $comic );
+		$em	   = $this->getDoctrine()->getManager();
+		$user	 = $this->getUser();
+		$comic	= $em->getRepository('ZonaComixWebsiteBundle:Comic')->findOneByTitle( $comic );
 		$chapters = $em->getRepository('ZonaComixWebsiteBundle:Chapter')->findByComic( $comic, array('number' => 'DESC'), 10,( $page - 1 ) * 9 );
 
 		if( $comic->getUser() == $user ){
@@ -215,11 +215,11 @@ class DashboardController extends Controller
 					'label' => 'Clasificación',
 					'attr'   => array( 'help'=>'Elige el tipo de clasificación que mejor se adapte a tu comic. Esto nos ayuda a mostrárselo a la audiencia más adecuada.' ),
 					'choices'   => array(
-						'1' => 'G - Todos los públicos',
-						'2' => 'PG - Guía Paternal Sugerida',
-						'3' => 'PG-13 - Guía Paternal Estricta',
-						'4' => 'R - Restringido',
-						'5' => 'NC-17 - Prohibido para audiencia de 17 o menos'
+						'1' => 'Para todos',
+						'2' => 'Todos los mayores de 10+',
+						'3' => 'Adolescentes 12+',
+						'4' => 'Menores Maduros 17+',
+						'5' => 'Adultos 18+'
 					)))
 				->add('genre', 'choice', array(
 					'label' => 'Género',
@@ -313,9 +313,9 @@ class DashboardController extends Controller
 
 		$form = $this->createFormBuilder($chapter)
 			->add('title', 'text', array(
-				'label'    => 'Título',
+				'label'	=> 'Título',
 				'required' => false,
-				'attr'     => array( 'help'=>'Este es el título que recibirá tu nuevo capítulo.'
+				'attr'	 => array( 'help'=>'Este es el título que recibirá tu nuevo capítulo.'
 				)))
 			->add('file', 'file', array(
 				'label'  => 'Archivo Zip',
@@ -323,10 +323,10 @@ class DashboardController extends Controller
 				'mapped' => false
 				))
 			->add('visible', 'checkbox', array(
-				'label'    => 'Visible al público',
+				'label'	=> 'Visible al público',
 				'required' => false,
-				'attr'     => array(
-					'help'    =>'Determina si deseas que el capítulo se muestre al público en cuanto termines de publicarlo.',
+				'attr'	 => array(
+					'help'	=>'Determina si deseas que el capítulo se muestre al público en cuanto termines de publicarlo.',
 					'checked' => true
 				)))
 			->add('save', 'submit', array(
@@ -394,7 +394,7 @@ class DashboardController extends Controller
 	
 	public function EditComicAction(Request $request, $comic)
 	{
-		$em    = $this->getDoctrine()->getManager();
+		$em	= $this->getDoctrine()->getManager();
 		$comic = $em->getRepository('ZonaComixWebsiteBundle:Comic')->findOneByTitle( $comic );
 		$user  = $this->getUser();
 
@@ -418,11 +418,11 @@ class DashboardController extends Controller
 					'label' => 'Clasificación',
 					'attr'   => array( 'help'=>'Elige el tipo de clasificación que mejor se adapte a tu comic. Esto nos ayuda a mostrárselo a la audiencia más adecuada.' ),
 					'choices'   => array(
-						'1' => 'G - Todos los públicos',
-						'2' => 'PG - Guía Paternal Sugerida',
-						'3' => 'PG-13 - Guía Paternal Estricta',
-						'4' => 'R - Restringido',
-						'5' => 'NC-17 - Prohibido para audiencia de 17 o menos'
+						'1' => 'Para todos',
+						'2' => 'Todos los mayores de 10+',
+						'3' => 'Adolescentes 12+',
+						'4' => 'Menores Maduros 17+',
+						'5' => 'Adultos 18+'
 					)))
 				->add('genre', 'choice', array(
 					'label' => 'Género',
@@ -491,33 +491,33 @@ class DashboardController extends Controller
 	
 	public function EditChapterAction(Request $request, $comic, $chapter)
 	{
-		$em      = $this->getDoctrine()->getManager();
+		$em	  = $this->getDoctrine()->getManager();
 		$comic   = $em->getRepository('ZonaComixWebsiteBundle:Comic')->findOneByTitle( $comic );
 		$chapter = $em->getRepository('ZonaComixWebsiteBundle:Chapter')->findOneBy( array(
 			'comic'  => $comic,
 			'number' => $chapter
 		));
-		$user    = $this->getUser();
+		$user	= $this->getUser();
 
 		if( $comic->getUser() == $user ){
 
 			$form = $this->createFormBuilder($chapter)
 				->add('title', 'text', array(
-					'label'    => 'Título',
+					'label'	=> 'Título',
 					'required' => false,
-					'attr'     => array( 'help'=>'Este es el título que recibirá tu nuevo capítulo.'
+					'attr'	 => array( 'help'=>'Este es el título que recibirá tu nuevo capítulo.'
 					)))
 				->add('file', 'file', array(
-					'label'    => 'Archivo Zip',
+					'label'	=> 'Archivo Zip',
 					'required' => false,
-					'attr'     => array( 'help'=>'Archivo .zip con las imágenes del comic.' ),
+					'attr'	 => array( 'help'=>'Archivo .zip con las imágenes del comic.' ),
 					'mapped'   => false
 					))
 				->add('visible', 'checkbox', array(
-					'label'    => 'Visible al público',
+					'label'	=> 'Visible al público',
 					'required' => false,
-					'attr'     => array(
-						'help'    =>'Determina si deseas que el capítulo se muestre al público.'
+					'attr'	 => array(
+						'help'	=>'Determina si deseas que el capítulo se muestre al público.'
 					)))
 				->add('save', 'submit', array(
 					'label' => 'Editar Capítulo',
@@ -575,7 +575,7 @@ class DashboardController extends Controller
 
 			return $this->render('ZonaComixWebsiteBundle:Website:Dashboard/EditChapter.html.twig', array(
 				'chapter' => $chapter,
-				'form'    => $form->createView(),
+				'form'	=> $form->createView(),
 			));
 		}
 		else{
@@ -585,13 +585,13 @@ class DashboardController extends Controller
 
 	public function ModelChapterAction($comic, $chapter, $pages)
 	{
-		$em      = $this->getDoctrine()->getManager();
+		$em	  = $this->getDoctrine()->getManager();
 		$comic   = $em->getRepository('ZonaComixWebsiteBundle:Comic')->findOneById( $comic );
 		$chapter = $em->getRepository('ZonaComixWebsiteBundle:Chapter')->findOneBy( array(
 			'comic'  => $comic,
 			'number' => $chapter
 		));
-		$user    = $this->getUser();
+		$user	= $this->getUser();
 
 		if( $comic->getUser() == $user ){
 			return $this->render('ZonaComixWebsiteBundle:Website:Dashboard/ModelChapter.html.twig', array(

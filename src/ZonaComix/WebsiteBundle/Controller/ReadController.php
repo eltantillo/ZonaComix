@@ -100,4 +100,15 @@ class ReadController extends Controller
 				));
 		}
 	}
+	public function StopReadingAction($comic){
+		$user    = $this->getUser();
+		$em	     = $this->getDoctrine()->getManager();
+		$comic   = $em->getRepository('ZonaComixWebsiteBundle:Comic')->findOneByTitle( $comic );
+		$reading = $em->getRepository('ZonaComixWebsiteBundle:Reading')->findOneBy( array( 'comic' => $comic, 'user' => $user ) );
+
+		$em->remove($reading);
+		$em->flush();
+		
+		return $this->redirect($this->generateUrl('zona_comix_website_library'));
+	}
 }

@@ -12,14 +12,12 @@ crear tablas
 php app/console doctrine:schema:update --force
 
 ##Lista de trabajo
- - Escribir las políticas
  - Programar un sistema de cambio de correo electrónico
  - Programar un sistema de cambio de contraseña
  - En el modelador mostrar para que sirven cada uno de los botones
  - En el modelador el panel seleccionado se deselecciona si se presiona alguno de los botones
+ - Actualizar el modelador para que no reste número al total de páginas
  - Poner un boton para retirar los fondos en el balance *
- - Cambiar las clasificaciones
- - Actualizar el maquetador para que no reste número al total de páginas
 
  - Hay un error si se trata de escanear un folder que no existe **
 
@@ -42,4 +40,3 @@ php app/console doctrine:schema:update --force
  - 20,000 visitas diarias
 
 ##Textos pendientes
-¿Como Funciona ZonaComix?

@@ -15,18 +15,18 @@ class ExploreController extends Controller
         $form = $this->createFormBuilder($comic)
             ->add('rating', 'choice', array(
                 'label'   => 'Clasificación',
-                'attr'    => array( 'help'=>'Elige el tipo de clasificación que mejor se adapte a tu comic. Esto nos ayuda a mostrárselo a la audiencia más adecuada.' ),
+                'attr'    => array( 'help'=>'Elige la clasificación en la que desees buscar.' ),
                 'choices' => array(
                     '%' => 'Todas',
-                    '1' => 'G - Todos los públicos',
-                    '2' => 'PG - Guía Paternal Sugerida',
-                    '3' => 'PG-13 - Guía Paternal Estricta',
-                    '4' => 'R - Restringido',
-                    '5' => 'NC-17 - Prohibido para audiencia de 17 o menos'
+                    '1' => 'Para todos',
+                    '2' => 'Todos los mayores de 10+',
+                    '3' => 'Adolescentes 12+',
+                    '4' => 'Menores Maduros 17+',
+                    '5' => 'Adultos 18+'
                 )))
             ->add('genre', 'choice', array(
                 'label'   => 'Género',
-                'attr'    => array( 'help'=>'Elige el género de tu Comic.' ),
+                'attr'    => array( 'help'=>'Elige el género del comic que desees buscar.' ),
                 'choices' => array(
                     '%'  => 'Todos',
                     '1'  => 'Infantil',
@@ -43,7 +43,7 @@ class ExploreController extends Controller
                 )))
             ->add('style', 'choice', array(
                 'label'   => 'Estilo',
-                'attr'    => array( 'help'=>'Elige el estilo en el que se presenta tu Comic.' ),
+                'attr'    => array( 'help'=>'Elige el estilo de comic que deseas buscar.' ),
                 'choices' => array(
                     '%' => 'Todos',
                     '1' => 'Comic',
@@ -51,8 +51,7 @@ class ExploreController extends Controller
                 )))
             ->add('license', 'choice', array(
                 'label' => 'Licencia',
-                'attr'  => array( 'help'=>'Esta es la licencia bajo la que se encontrará protegido tu comic. Elige la que más te convenga.' ),
-                //<a href="https://creativecommons.org/licenses/?lang=es" target="_blank">Pulsa aquí</a> para leer más sobre las licencias Creative Commons y sus diversos tipos.
+                'attr'  => array( 'help'=>'Filtra los resultados por el tipo de licencia.' ),
                 'choices' => array(
                     '%' => 'Todas',
                     '1' => 'Atribución-NoComercial-SinDerivadas (CC BY-NC-ND)',

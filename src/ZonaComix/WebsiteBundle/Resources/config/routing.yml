@@ -94,6 +94,10 @@ zona_comix_website_read_chapter:
     path:     /leer/{comic}/{chapter}/{page}/
     defaults: { _controller: ZonaComixWebsiteBundle:Read:index, chapter: 1, page: 0 }
 
+zona_comix_website_stop_reading:
+    path:     /leer/borrar/{comic}/
+    defaults: { _controller: ZonaComixWebsiteBundle:Read:StopReading }
+
 zona_comix_website_explore:
     path:     /explorar/
     defaults: { _controller: ZonaComixWebsiteBundle:Explore:index}
@@ -131,6 +135,14 @@ logout:
 zona_comix_website_advantages:
     path:     /ventajas/
     defaults: { _controller: ZonaComixWebsiteBundle:Pages:Advantages }
+
+zona_comix_website_privacy:
+    path:     /privacidad/
+    defaults: { _controller: ZonaComixWebsiteBundle:Pages:Privacy }
+
+zona_comix_website_use:
+    path:     /uso/
+    defaults: { _controller: ZonaComixWebsiteBundle:Pages:Use }
 
 
 test:

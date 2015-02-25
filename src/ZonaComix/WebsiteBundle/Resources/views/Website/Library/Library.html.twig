@@ -25,7 +25,19 @@
                     </div>
                 </div>
             </div>
-            {% block content %}{% endblock %}
+            {% block content %}
+                <h2 class="page-header">Lecturas recientes</h2>
+                {% for reading in readings %}
+
+                    <div class="col-sm-4 text-center">
+                        <a href="{{ path('zona_comix_website_read_chapter', {'comic': reading.comic.title, 'chapter': reading.chapter, 'page': reading.page}) }}" class="clean-link">
+                            <h3>{{ reading.comic.title }}</h3>
+                            <p><img src="{{ asset('comics/' ~ reading.comic.id ~ '/cover.jpg') }}" class="img-responsive"></p>
+                        </a>
+                        <p><a class="btn btn-primary btn-lg" href="{{ path('zona_comix_website_stop_reading', {'comic': reading.comic.title}) }}" role="button">Dejar de Leer <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></p>
+                    </div>
+                {% endfor %}
+            {% endblock %}
         </div>
     </div>
 {% endblock %}
