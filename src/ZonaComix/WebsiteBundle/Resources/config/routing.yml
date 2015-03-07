@@ -1,6 +1,6 @@
 zona_comix_website_cover:
-    path:     /{main}
-    defaults: { _controller: ZonaComixWebsiteBundle:Home:Cover, main: '/' }
+    path:     /
+    defaults: { _controller: ZonaComixWebsiteBundle:Home:Cover }
 
 zona_comix_website_home:
     path:     /inicio/{page}/

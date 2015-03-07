@@ -196,6 +196,7 @@ a.clean-link:hover, a.clean-link:active{
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
+	margin-bottom: 20px;
 }
 
 .bubble a{
