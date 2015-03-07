@@ -64,8 +64,6 @@
 
 	<div class="reader-bg text-center" id="reader">
 
-		<img id="image" src="{{ asset('comics/' ~ comic.id ~ '/' ~ chapter.number ~ '/' ~ page ~ '.jpg') }}" class="img-responsive">
-
 		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 		<!-- ZonaComix -->
 		<ins class="adsbygoogle"
@@ -76,6 +74,8 @@
 		<script>
 		(adsbygoogle = window.adsbygoogle || []).push({});
 		</script>
+
+		<img id="image" src="{{ asset('comics/' ~ comic.id ~ '/' ~ chapter.number ~ '/' ~ page ~ '.jpg') }}" class="img-responsive">
 	</div>
 	
 <!-- Modal -->
