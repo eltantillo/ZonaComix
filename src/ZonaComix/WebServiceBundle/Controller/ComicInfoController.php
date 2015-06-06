@@ -17,9 +17,8 @@ class ComicInfoController extends FOSRestController
         $comic   = $em->getRepository('ZonaComixWebsiteBundle:Comic')->find( 1 );
         $chapter = $em->getRepository('ZonaComixWebsiteBundle:Chapter')->findOneBy( array( 'comic' => $comic, 'number' => $chapter ) );
         
-        $encoders = array(new XmlEncoder(), new JsonEncoder());
         $normalizers = array(new GetSetMethodNormalizer());
-        $serializer = new Serializer($normalizers, $encoders);
+        $serializer = new Serializer($normalizers, new JsonEncoder());
 
         $info = $serializer->serialize($chapter, 'json');
 
