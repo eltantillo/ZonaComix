@@ -10,12 +10,12 @@ class ComicInfoController extends FOSRestController
 {
     public function ComicInfoAction()
     {
-        $comic   = (int)$this->get('request')->request->get('Comic');
+        $comic   = $this->get('request')->request->get('Comic');
         $chapter = (int)$this->get('request')->request->get('Chapter');
 
         $em      = $this->getDoctrine()->getManager();
-        $comic   = $em->getRepository('ZonaComixWebsiteBundle:Comic')->find( $comic );
-        $chapter = $em->getRepository('ZonaComixWebsiteBundle:Chapter')->findOneBy( array( 'comic' => $comic, 'number' => $chapter ) );
+        $comic   = $em->getRepository('ZonaComixWebsiteBundle:Comic')->find( $comic + 0 );
+        $chapter = $em->getRepository('ZonaComixWebsiteBundle:Chapter')->findOneBy( array( 'comic' => $comic, 'number' => $chapter + 0 ) );
 
         $response = new Response();
         $response->setContent('{"PagesNumber":' . $chapter->getPages() . ',"ReadStyle":' . $comic->getStyle() . '}');
