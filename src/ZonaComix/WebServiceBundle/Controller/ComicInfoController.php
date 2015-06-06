@@ -12,9 +12,7 @@ class ComicInfoController extends FOSRestController
     {
         $comic   = $this->get('request')->request->get('Comic');
         $chapter = $this->get('request')->request->get('Chapter');
-
-        $ChapterModel = fopen("comics/" . $comic . "/" . $chapter . "/ChapterModel.zc", "w");
-
+        
         $response = new Response();
         $response->setContent("Holis");
         $response->headers->set('Content-Type', 'text/html');
