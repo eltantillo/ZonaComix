@@ -21,7 +21,7 @@ class ComicInfoController extends FOSRestController
 
         $response = new Response();
         //$response->setContent('{"PagesNumber":' . $chapter->getPages() . ',"ReadStyle":' . $comic->getStyle() . '}');
-        $response->setContent($comic . " " .$chapter);
+        $response->setContent($comic . " Hola? " .$chapter);
         $response->headers->set('Content-Type', 'text/html');
         $response->setStatusCode(Response::HTTP_OK);
         return $response;
