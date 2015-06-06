@@ -13,7 +13,7 @@ class ComicInfoController extends FOSRestController
         $comic   = $this->get('request')->request->get('Comic');
         $chapter = (int)$this->get('request')->request->get('Chapter');
 
-        echo($comic.$chapter);
+        echo($comic . " " .$chapter);
 
         $em      = $this->getDoctrine()->getManager();
         $comic   = $em->getRepository('ZonaComixWebsiteBundle:Comic')->find( (int)$comic );
