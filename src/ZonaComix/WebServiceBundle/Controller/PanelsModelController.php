@@ -10,9 +10,9 @@ class PanelsModelController extends FOSRestController
 {
     public function SavePanelsAction()
     {
-        $comic   =  $this->get('request')->request->get('Comic');
+        $comic   = $this->get('request')->request->get('Comic');
         $chapter = $this->get('request')->request->get('Chapter');
-        $json    =  $this->get('request')->request->get('JSON');
+        $json    = $this->get('request')->request->get('JSON');
 
         $ChapterModel = fopen("comics/" . $comic . "/" . $chapter . "/ChapterModel.zc", "w");
         fwrite($ChapterModel, $json);
