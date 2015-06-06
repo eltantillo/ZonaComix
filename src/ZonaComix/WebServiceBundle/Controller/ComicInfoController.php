@@ -12,14 +12,15 @@ class ComicInfoController extends FOSRestController
     {
         $comic   = $this->get('request')->request->get('Comic');
         $chapter = $this->get('request')->request->get('Chapter');
+        
         $em      = $this->getDoctrine()->getManager();
-        $comic   = $em->getRepository('ZonaComixWebsiteBundle:Comic')->findOneByID( $comic );
+        $comic   = $em->getRepository('ZonaComixWebsiteBundle:Comic')->find( $comic );
         $chapter = $em->getRepository('ZonaComixWebsiteBundle:Chapter')->findOneBy( array( 'comic' => $comic, 'number' => $chapter ) );
         
         $encoders = array(new XmlEncoder(), new JsonEncoder());
         $normalizers = array(new GetSetMethodNormalizer());
         $serializer = new Serializer($normalizers, $encoders);
-        
+
         $info = $serializer->serialize($chapter, 'json');
 
         $response = new Response();
