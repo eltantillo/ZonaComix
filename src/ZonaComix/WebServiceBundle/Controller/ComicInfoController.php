@@ -26,7 +26,8 @@ class ComicInfoController extends FOSRestController
 
         $serializer = new Serializer($normalizers, $encoders);
 
-        //$info = $serializer->serialize($Chapter, 'json');
+        $ComicInfo = $serializer->serialize($Comic, 'json');
+        $ChapterInfo = $serializer->serialize($Chapter, 'json');
 
         $response = new Response();
         $response->setContent("Manga: " . $Comic->getStyle() . "Pages: " . $Chapter->getPages());
