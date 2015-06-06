@@ -11,16 +11,17 @@ class ComicInfoController extends FOSRestController
     public function ComicInfoAction()
     {
         $comic   = $this->get('request')->request->get('Comic');
-        $chapter = (int)$this->get('request')->request->get('Chapter');
+        $chapter = $this->get('request')->request->get('Chapter');
 
-        echo($comic . " " .$chapter);
+        //echo();
 
-        $em      = $this->getDoctrine()->getManager();
+        /*$em      = $this->getDoctrine()->getManager();
         $comic   = $em->getRepository('ZonaComixWebsiteBundle:Comic')->find( (int)$comic );
-        $chapter = $em->getRepository('ZonaComixWebsiteBundle:Chapter')->findOneBy( array( 'comic' => $comic, 'number' => (int)$chapter ) );
+        $chapter = $em->getRepository('ZonaComixWebsiteBundle:Chapter')->findOneBy( array( 'comic' => $comic, 'number' => (int)$chapter ) );*/
 
         $response = new Response();
-        $response->setContent('{"PagesNumber":' . $chapter->getPages() . ',"ReadStyle":' . $comic->getStyle() . '}');
+        //$response->setContent('{"PagesNumber":' . $chapter->getPages() . ',"ReadStyle":' . $comic->getStyle() . '}');
+        $response->setContent($comic . " " .$chapter);
         $response->headers->set('Content-Type', 'text/html');
         $response->setStatusCode(Response::HTTP_OK);
         return $response;
