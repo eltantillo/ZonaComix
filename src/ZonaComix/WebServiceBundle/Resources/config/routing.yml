@@ -2,3 +2,8 @@ zona_comix_web_service_save_panels:
     path:     /savepanels
     defaults: { _controller: ZonaComixWebServiceBundle:PanelsModel:SavePanels }
     methods: [POST]
+
+zona_comix_web_service_comic_info:
+    path:     /comicinfo
+    defaults: { _controller: ZonaComixWebServiceBundle:ComicInfo:ComicInfo }
+    methods: [POST]
