@@ -3,6 +3,10 @@
 namespace ZonaComix\WebServiceBundle\Controller;
 
 use FOS\RestBundle\Controller\FOSRestController;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\Encoder\XmlEncoder;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -17,8 +21,10 @@ class ComicInfoController extends FOSRestController
         $comic   = $em->getRepository('ZonaComixWebsiteBundle:Comic')->find( 1 );
         $chapter = $em->getRepository('ZonaComixWebsiteBundle:Chapter')->findOneBy( array( 'comic' => $comic, 'number' => $chapter ) );
         
+        $encoders = array(new XmlEncoder(), new JsonEncoder());
         $normalizers = array(new GetSetMethodNormalizer());
-        $serializer = new Serializer($normalizers, new JsonEncoder());
+
+        $serializer = new Serializer($normalizers, $encoders);
 
         $info = $serializer->serialize($chapter, 'json');
 
