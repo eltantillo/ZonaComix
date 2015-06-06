@@ -14,12 +14,12 @@ class ComicInfoController extends FOSRestController
 {
     public function ComicInfoAction()
     {
-        $comic   = $this->get('request')->request->get('Comic');
-        $chapter = $this->get('request')->request->get('Chapter');
+        $comic   = (int)$this->get('request')->request->get('Comic');
+        $chapter = (int)$this->get('request')->request->get('Chapter');
 
         $em      = $this->getDoctrine()->getManager();
-        $comic   = $em->getRepository('ZonaComixWebsiteBundle:Comic')->find( 1 );
-        $chapter = $em->getRepository('ZonaComixWebsiteBundle:Chapter')->findOneBy( array( 'comic' => $comic, 'number' => 1 ) );
+        $comic   = $em->getRepository('ZonaComixWebsiteBundle:Comic')->find( $comic );
+        $chapter = $em->getRepository('ZonaComixWebsiteBundle:Chapter')->findOneBy( array( 'comic' => $comic, 'number' => $chapter ) );
         
         $encoders = array(new XmlEncoder(), new JsonEncoder());
         $normalizers = array(new GetSetMethodNormalizer());
@@ -29,7 +29,7 @@ class ComicInfoController extends FOSRestController
         //$info = $serializer->serialize($chapter, 'json');
 
         $response = new Response();
-        $response->setContent("Holis");
+        $response->setContent("Manga: "$comic->getStyle() + "Pages: " + $chapter->getPages());
         $response->headers->set('Content-Type', 'text/html');
         $response->setStatusCode(Response::HTTP_OK);
         return $response;
