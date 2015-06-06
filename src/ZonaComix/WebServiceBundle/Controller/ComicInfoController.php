@@ -18,18 +18,18 @@ class ComicInfoController extends FOSRestController
         $chapter = (int)$this->get('request')->request->get('Chapter');
 
         $em      = $this->getDoctrine()->getManager();
-        $comic   = $em->getRepository('ZonaComixWebsiteBundle:Comic')->find( $comic );
-        $chapter = $em->getRepository('ZonaComixWebsiteBundle:Chapter')->findOneBy( array( 'comic' => $comic, 'number' => $chapter ) );
+        $Comic   = $em->getRepository('ZonaComixWebsiteBundle:Comic')->find( $comic );
+        $Chapter = $em->getRepository('ZonaComixWebsiteBundle:Chapter')->findOneBy( array( 'comic' => $comic, 'number' => $chapter ) );
         
         $encoders = array(new XmlEncoder(), new JsonEncoder());
         $normalizers = array(new GetSetMethodNormalizer());
 
         $serializer = new Serializer($normalizers, $encoders);
 
-        //$info = $serializer->serialize($chapter, 'json');
+        //$info = $serializer->serialize($Chapter, 'json');
 
         $response = new Response();
-        $response->setContent("Manga: " + $comic->getStyle() + "Pages: " + $chapter->getPages());
+        $response->setContent("Manga: " + $Comic->getStyle() + "Pages: " + $Chapter->getPages());
         $response->headers->set('Content-Type', 'text/html');
         $response->setStatusCode(Response::HTTP_OK);
         return $response;
