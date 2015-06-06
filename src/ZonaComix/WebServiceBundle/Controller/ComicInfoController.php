@@ -29,7 +29,7 @@ class ComicInfoController extends FOSRestController
         $info = $serializer->serialize($chapter, 'json');
 
         $response = new Response();
-        $response->setContent($info + );
+        $response->setContent($info);
         $response->headers->set('Content-Type', 'text/html');
         $response->setStatusCode(Response::HTTP_OK);
         return $response;
